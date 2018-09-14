@@ -9,28 +9,28 @@ public class Block {
 	private String hash;
 	private String previousHash;
 	private String transaction;
-	
+
 	public Block(int id, String previousHash, String transactions) {
 		super();
 		this.id = id;
 		this.previousHash = previousHash;
 		this.transaction = transactions;
 		this.timeStamp = new Date().getTime();
-		generateHash();
+		this.generateHash();
 	}
 
 	public void generateHash() {
-		String dataToHash = Integer.toString(id) //
-				+ Integer.toString(nonce) //
-				+ Long.toString(timeStamp) //
-				+ previousHash //
-				+ transaction;
+		String dataToHash = Integer.toString(this.id) //
+				+ Integer.toString(this.nonce) //
+				+ Long.toString(this.timeStamp) //
+				+ this.previousHash //
+				+ this.transaction;
 		String hashValue = SHA256Helper.generateHash(dataToHash);
 		this.hash = hashValue;
 	}
 
 	public String getHash() {
-		return hash;
+		return this.hash;
 	}
 
 	public void setHash(String hash) {
@@ -38,20 +38,19 @@ public class Block {
 	}
 
 	public String getPreviousHash() {
-		return previousHash;
+		return this.previousHash;
 	}
 
 	public void setPreviousHash(String previousHash) {
 		this.previousHash = previousHash;
 	}
-	
+
 	public void incrementNonce() {
 		this.nonce++;
 	}
 
 	@Override
 	public String toString() {
-		return "Block [id=" + id + ", hash=" + hash + ", previousHash=" + previousHash + ", transaction=" + transaction
-				+ "]";
+		return "Block [id=" + this.id + ", hash=" + this.hash + ", previousHash=" + this.previousHash + ", transaction=" + this.transaction + "]";
 	}
 }

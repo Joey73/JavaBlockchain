@@ -2,18 +2,19 @@ package org.joey.blockchain;
 
 public class Miner {
 	private double reward;
-	
+
 	public void mine(Block block, Blockchain blockchain) {
-		while(notGoldenHash(block)) {
+		System.out.println("\nMining...");
+		while (this.notGoldenHash(block)) {
 			block.generateHash();
 			block.incrementNonce();
 		}
-		
+
 		System.out.println(block + " has just mined...");
 		System.out.println("Hash is: " + block.getHash());
-		
+
 		blockchain.addBlock(block);
-		reward += Constants.MINER_REWARD;
+		this.reward += Constants.MINER_REWARD;
 	}
 
 	private boolean notGoldenHash(Block block) {
