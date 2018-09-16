@@ -45,8 +45,8 @@ public class Transaction {
 		}
 
 		// Transactions have 2 parts: send an amount to the receiver + send the (balance-amount) back to the sender.
-		this.outputs.add(new TransactionOutput(this.transactionId, this.receiver, this.amount)); // send value to recipient
-		this.outputs.add(new TransactionOutput(this.transactionId, this.sender, getInputSum() - this.amount)); //
+		this.outputs.add(new TransactionOutput(this.receiver, this.amount, this.transactionId)); // send value to recipient
+		this.outputs.add(new TransactionOutput(this.sender, getInputsSum() - this.amount, this.transactionId)); //
 
 		// Remove transaction inputs from blockchain's UTXOs list because they have been spent
 		for (TransactionInput transactionInput : this.inputs) {

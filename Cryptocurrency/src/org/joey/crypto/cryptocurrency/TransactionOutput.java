@@ -12,7 +12,7 @@ public class TransactionOutput {
 	// Amount of coins
 	private double amount;
 
-	public TransactionOutput(String parentTransactionId, PublicKey receiver, double amount) {
+	public TransactionOutput(PublicKey receiver, double amount, String parentTransactionId) {
 		super();
 		this.parentTransactionId = parentTransactionId;
 		this.receiver = receiver;
